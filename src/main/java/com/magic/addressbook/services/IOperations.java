@@ -6,6 +6,6 @@ public interface IOperations {
     void addContact(PersonInfo personInfo);
     void view();
     void updateContact();
-    void deleteContact();
+    void deleteContact(int serialNumber);
 
 }
