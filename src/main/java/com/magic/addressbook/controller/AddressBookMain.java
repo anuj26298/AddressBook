@@ -1,21 +1,23 @@
 package com.magic.addressbook.controller;
 
-import com.magic.addressbook.entity.PersonInfo;
-import com.magic.addressbook.services.Operations;
+import com.magic.addressbook.entity.*;
+import com.magic.addressbook.services.*;
 
 import java.util.Scanner;
-
+/*
+    @author Anuj Kumar
+ */
 public class AddressBookMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Operations operations = new Operations();
+        IOperations operations = new Operations();
         String controlVariable = "y";
 
         do{
             System.out.println("Enter 'add' to Add New Data.");
             System.out.println("Enter 'del' to Delete Data.");
             System.out.println("Enter 'edit' to Update Data.");
-
+            System.out.println("Enter 'view' to view Address Book");
             String input = scanner.nextLine();
 
             switch (input){
@@ -41,6 +43,7 @@ public class AddressBookMain {
                             city,state,zipCode,phoneNumber,zipCode,email));
                     System.out.println("Do you want to Continue?(y/n)");
                     controlVariable = scanner.nextLine();
+
                     break;
                 }
 
@@ -55,6 +58,7 @@ public class AddressBookMain {
                 }
 
                 case  "edit":{
+                    operations.view();
                     System.out.println("Enter Serial Number to Edit");
                     int serialNumber = scanner.nextInt();
                     System.out.println("Enter the column to Edit");
@@ -66,8 +70,11 @@ public class AddressBookMain {
                     controlVariable = scanner.nextLine();
                     break;
                 }
+                case "view":
+                    operations.view();
+
 
             }
-        }while (controlVariable.endsWith("n"));
+        }while (controlVariable.equals("y"));
     }
 }

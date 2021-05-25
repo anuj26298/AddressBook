@@ -13,16 +13,14 @@ public class PersonInfo {
 
     public PersonInfo(String firstName, String lastName, String address, String city, String state,
                       String zipCode, String phoneNumber, String code, String email) {
-        this.firstName = this.firstName;
-        this.lastName = this.lastName;
-        this.city = this.city;
-        this.state = this.state;
-        this.zipCode = this.zipCode;
-        this.phoneNumber = this.phoneNumber;
-        this.email = this.email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
-
-
 /*
     Getters and Setters
  */
@@ -49,6 +47,20 @@ public class PersonInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonInfo{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
     public void getCity() {

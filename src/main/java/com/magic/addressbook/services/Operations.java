@@ -7,23 +7,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class Operations implements IOperations {
-    PersonInfo personInfo = null;
+    PersonInfo personinfo = null;
     List<PersonInfo> personInfoList = new ArrayList<>();
 
     @Override
     public void addContact(PersonInfo personInfo) {
-        this.personInfo = personInfo;
+        this.personinfo = personInfo;
         personInfoList.add(personInfo);
-
+        System.out.println(personInfoList);
     }
 
     @Override
 
     public void deleteContact(int serialNumber) {
-        if (Objects.isNull(personInfo))
+        if (Objects.isNull(personinfo))
             System.out.println("Person not exists Address Book.");
         else {
-            personInfoList.get(serialNumber);
             System.gc();
             System.runFinalization();
             System.out.println("Deleted Successfully");
@@ -32,19 +31,21 @@ public class Operations implements IOperations {
 
     @Override
     public void view() {
-
-        if (Objects.isNull(personInfo))
+            int serialNumber = 0;
+        if (Objects.isNull(personinfo))
             System.out.println("==== Address Book is Empty ====");
         else {
-            for (PersonInfo personInfo : personInfoList) {
-                personInfo.getFirstName();
-                personInfo.getLastName();
-                personInfo.getAddress();
-                personInfo.getCity();
-                personInfo.getState();
-                personInfo.getZipCode();
-                personInfo.getPhoneNumber();
-                personInfo.getEmail();
+            for (PersonInfo personinfo : personInfoList) {
+                System.out.println("S.No: "+ serialNumber + " ");
+                personinfo.getFirstName();
+                personinfo.getLastName();
+                personinfo.getAddress();
+                personinfo.getCity();
+                personinfo.getState();
+                personinfo.getZipCode();
+                personinfo.getPhoneNumber();
+                personinfo.getEmail();
+                System.out.println();
             }
         }
     }
@@ -53,7 +54,7 @@ public class Operations implements IOperations {
 
     public void updateContact(int serialNumber, int columnNumber, String editedInfo) {
         serialNumber -= 1;
-        if (Objects.isNull(personInfo))
+        if (Objects.isNull(personinfo))
             System.out.println("This Info doesn't exist to edit.");
         else {
             switch (columnNumber) {
