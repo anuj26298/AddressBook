@@ -3,7 +3,6 @@ package com.magic.addressbook.controller;
 import com.magic.addressbook.entity.*;
 import com.magic.addressbook.services.*;
 
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,8 +38,8 @@ public class ContactOperations {
                     System.out.println("Enter E-mail: ");
                     String email = scanner.nextLine();
 
-                    operations.addContact(new PersonInfo(firstName, lastName, address,
-                            city, state, zipCode, phoneNumber, zipCode, email));
+                    operations.addContact(personInfos, new PersonInfo(firstName,lastName,address,city
+                            ,state, zipCode, email, phoneNumber));
                     System.out.println("Do you want to Continue?(y/n)");
                     controlVariable = scanner.nextLine();
 
@@ -48,30 +47,49 @@ public class ContactOperations {
                 }
 
                 case "del": {
-                    System.out.println("Enter the Serial Number to delete...");
-                    int serialNumber = scanner.nextInt();
-                    operations.deleteContact(serialNumber);
+                            scanner.next();
+                    System.out.println("Enter First Name");
+                    String firstName = scanner.nextLine();
+                    System.out.println("Enter Last Name");
+                    String lastName = scanner.nextLine();
+                    operations.deleteContact(personInfos,firstName,lastName);
                     System.out.println("Do you want to Continue?(y/n)");
                     controlVariable = scanner.nextLine();
                     break;
-
                 }
 
                 case "edit": {
-                    operations.view();
-                    System.out.println("Enter Serial Number to Edit");
-                    int serialNumber = scanner.nextInt();
-                    System.out.println("Enter the column to Edit");
-                    int columnNumber = scanner.nextInt();
-                    System.out.println("Enter Detail");
-                    String editedDetail = scanner.nextLine();
-                    operations.updateContact(serialNumber, columnNumber, editedDetail);
+                    scanner.next();
+                    System.out.println("Enter Person's Old First Name");
+                    String oldFirstName = scanner.nextLine();
+                    System.out.println("Enter Person's Old Last Name");
+                    String oldLastName = scanner.nextLine();
+                    System.out.println("Enter New First Name");
+                    String newFirstName = scanner.nextLine();
+                    System.out.println("Enter New Last Name");
+                    String newLastName = scanner.nextLine();
+                    System.out.println("Enter New Address");
+                    String newAddress = scanner.nextLine();
+                    System.out.println("Enter New City");
+                    String newCity = scanner.nextLine();
+                    System.out.println("Enter New State");
+                    String newState = scanner.nextLine();
+                    System.out.println("Enter New Zipcode");
+                    String newZipcode = scanner.nextLine();
+                    System.out.println("Enter New Email");
+                    String newEmail = scanner.nextLine();
+                    System.out.println("Enter New Mobile Number");
+                    String newMobileNumber = scanner.nextLine();
+                    operations.updateContact(personInfos, oldFirstName, oldLastName, new PersonInfo(
+                            newFirstName, newLastName, newAddress, newCity , newState, newZipcode, newMobileNumber, newEmail));
                     System.out.println("Do you want to Continue?(y/n)");
                     controlVariable = scanner.nextLine();
                     break;
                 }
                 case "view":
-                    operations.view();
+                    operations.view(personInfos);
+                    System.out.println("Do you want to Continue?(y/n)");
+                    controlVariable = scanner.nextLine();
                     break;
 
                 default:

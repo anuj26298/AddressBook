@@ -12,9 +12,10 @@ public class PersonInfo {
 
 
     public PersonInfo(String firstName, String lastName, String address, String city, String state,
-                      String zipCode, String phoneNumber, String code, String email) {
+                      String zipCode, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
@@ -25,24 +26,27 @@ public class PersonInfo {
     Getters and Setters
  */
 
-    public void getFirstName() {
+    public String getFirstName() {
         System.out.println("First Name:" + firstName);
+        return lastName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void getLastName() {
+    public String getLastName() {
         System.out.println("Last Name: " + lastName);
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void getAddress() {
+    public String getAddress() {
         System.out.println("Address: " + address);
+        return address;
     }
 
     public void setAddress(String address) {
@@ -63,40 +67,45 @@ public class PersonInfo {
                 '}';
     }
 
-    public void getCity() {
+    public String getCity() {
         System.out.println("City: " + city);
+        return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    public void getState() {
+    public String getState() {
         System.out.println("State: " + state);
+        return state;
     }
 
     public void setState(String state) {
         this.state = state;
     }
 
-    public void getZipCode() {
+    public String getZipCode() {
         System.out.println("Zip Code: " + zipCode);
+        return zipCode;
     }
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
-    public void getPhoneNumber() {
+    public String getPhoneNumber() {
         System.out.println("Phone Number: " + phoneNumber);
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void getEmail() {
+    public String getEmail() {
         System.out.println("Email: " + email);
+        return email;
     }
 
     public void setEmail(String email) {
