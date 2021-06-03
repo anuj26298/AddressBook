@@ -61,6 +61,12 @@ public class Operations implements IOperations {
     }
 
     @Override
+    public List<String> sortedContact(List<PersonInfo> personInfos) {
+        List<String> sortedList = (List<String>) personInfos.stream().sorted();
+        return  sortedList;
+    }
+
+    @Override
     public void deleteContact(List<PersonInfo> personInfos, String firstName, String lastName) {
         int flag = 0;
         for (int i = 0; i < personInfos.size(); i++) {
