@@ -1,13 +1,17 @@
 package com.magic.addressbook.services;
 
 import com.magic.addressbook.entity.PersonInfo;
+
 import java.util.List;
 
+/*
+    Implementation of Operations like add, update, delete and view contact
+ */
 public class Operations implements IOperations {
-
 
     @Override
     public void addContact(List<PersonInfo> personInfos, PersonInfo personInfo) {
+
         String firstName = personInfo.getFirstName();
         String lastName = personInfo.getLastName();
 
@@ -37,8 +41,8 @@ public class Operations implements IOperations {
     @Override
     public void updateContact(List<PersonInfo> personInfos, String firstName, String lastName, PersonInfo personInfo) {
         int flag = 0;
-        for (PersonInfo info : personInfos){
-            if (info.getFirstName().equalsIgnoreCase(firstName) && info.getLastName().equalsIgnoreCase(lastName)){
+        for (PersonInfo info : personInfos) {
+            if (info.getFirstName().equalsIgnoreCase(firstName) && info.getLastName().equalsIgnoreCase(lastName)) {
                 flag = 1;
                 info.setFirstName(personInfo.getFirstName());
                 info.setLastName(personInfo.getLastName());
@@ -59,9 +63,9 @@ public class Operations implements IOperations {
     @Override
     public void deleteContact(List<PersonInfo> personInfos, String firstName, String lastName) {
         int flag = 0;
-        for (int i=0; i < personInfos.size(); i++){
+        for (int i = 0; i < personInfos.size(); i++) {
             if (personInfos.get(i).getFirstName().equalsIgnoreCase(firstName) &&
-                    personInfos.get(i).getLastName().equalsIgnoreCase(lastName)){
+                    personInfos.get(i).getLastName().equalsIgnoreCase(lastName)) {
                 flag = 1;
                 personInfos.remove(personInfos.get(i));
                 break;

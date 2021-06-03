@@ -7,6 +7,10 @@ import java.util.Scanner;
 /*
     @author Anuj Kumar
  */
+
+/*
+    Main Class of the Address Book System
+ */
 public class AddressBookMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -21,7 +25,7 @@ public class AddressBookMain {
             System.out.println();
             System.out.println();
             String input = scanner.nextLine();
-            switch (input){
+            switch (input) {
                 case "create":
                     System.out.println("Enter Address Book Name: ");
                     String addBookName = scanner.nextLine();
@@ -35,12 +39,12 @@ public class AddressBookMain {
                     String add_BookName = scanner.nextLine();
                     addBookOperations.openAddressBook(add_BookName);
                     break;
-                case  "search":
-                    do{
+                case "search":
+                    do {
                         System.out.println("Enter 'city' to search by city.");
                         System.out.println("Enter 'state' to search by state.");
                         input = scanner.nextLine();
-                        switch (input){
+                        switch (input) {
                             case "city":
                                 System.out.println("Enter City Name");
                                 String city = scanner.nextLine();
@@ -56,7 +60,7 @@ public class AddressBookMain {
                         }
                         System.out.println("Wanna Search again?(yes/no)");
                         controlVariable = scanner.nextLine();
-                    }while (controlVariable == "yes");
+                    } while (controlVariable == "yes");
                 case "all":
                     addBookOperations.showAddressBook();
                     break;
@@ -64,6 +68,6 @@ public class AddressBookMain {
             System.out.println("Do you want to continue?(y/n)");
             controlVariable = scanner.nextLine();
 
-        }while (controlVariable.equals("y"));
-        }
+        } while (controlVariable.equals("y"));
+    }
 }
