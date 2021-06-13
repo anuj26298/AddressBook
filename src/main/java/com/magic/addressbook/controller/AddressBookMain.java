@@ -16,7 +16,7 @@ public class AddressBookMain {
         Scanner scanner = new Scanner(System.in);
         IAddressBookOperations addBookOperations = new AddressBookOperations();
         ReadWriteOperations readWriteOperations = new ReadWriteOperations();
-        String controlVariable;
+        String controlVariable = null;
 
         do {
             System.out.println("Enter 'create' to create new Address Book");
@@ -42,6 +42,7 @@ public class AddressBookMain {
                     addBookOperations.openAddressBook(add_BookName);
                     break;
                 case "search":
+                    String controlVariable1;
                     do {
                         System.out.println("Enter 'city' to search by city.");
                         System.out.println("Enter 'state' to search by state.");
@@ -61,27 +62,60 @@ public class AddressBookMain {
                                 System.out.println("Enter correct Input");
                         }
                         System.out.println("Wanna Search again?(yes/no)");
-                        controlVariable = scanner.nextLine();
-                    } while (controlVariable == "yes");
+                        controlVariable1 = scanner.nextLine();
+                    } while (controlVariable1 == "yes");
                 case "all":
                     addBookOperations.showAddressBook();
                     break;
 
                 case "write":
-                    System.out.println("Enter the Address Book name");
-                    String addressBookName = scanner.next();
-                    System.out.println("Enter the name of file");
-                    String textFilename = scanner.next();
-                    addBookOperations.writeToTextFile(textFilename, addressBookName);
+                    String controlVariable2;
+
+                    do {
+                        System.out.println("Enter type of File to write(txt/csv)");
+                        input = scanner.next();
+                        switch (input) {
+                            case "txt":
+                                System.out.println("Enter the Address Book name");
+                                String addressBookName = scanner.next();
+                                System.out.println("Enter the name of file");
+                                String textFilename = scanner.next();
+                                addBookOperations.writeToTextFile(textFilename, addressBookName);
+                                break;
+                            case "csv":
+                                System.out.println("Enter Address Book Name");
+                                String addressBookName1 = scanner.next();
+                                System.out.println("Enter filename");
+                                String filename1 = scanner.next();
+                                addBookOperations.WriteToCSVFile(filename1, addressBookName1);
+                                break;
+                        }
+                        System.out.println("Do you want to continue?(y/n)");
+                        controlVariable2 = scanner.next();
+                    } while (controlVariable2.equalsIgnoreCase("y"));
 
                 case "read":
-                    System.out.println("Enter filename to read: ");
-                    String filename = scanner.next();
-                    addBookOperations.readFromTextFile(filename);
-            }
-            System.out.println("Do you want to continue?(y/n)");
-            controlVariable = scanner.nextLine();
+                    String controlVariableread1;
 
-        } while (controlVariable.equals("y"));
+                    do {
+                        System.out.println("Enter type of File to write(txt/csv)");
+                        input = scanner.next();
+                        switch (input) {
+                            case "txt":
+                                System.out.println("Enter filename to read: ");
+                                String filename = scanner.next();
+                                addBookOperations.readFromTextFile(filename);
+                                break;
+                            case "csv":
+                                System.out.println("Enter filename to read: ");
+                                String filename1 = scanner.next();
+                                addBookOperations.readFromCSVFile(filename1);
+                        }
+                        System.out.println("Do you want to continue?(y/n)");
+                        controlVariableread1 = scanner.nextLine();
+
+                    } while (controlVariableread1.equalsIgnoreCase("y"));
+            }
+        } while (controlVariable.equalsIgnoreCase("y"));
     }
 }

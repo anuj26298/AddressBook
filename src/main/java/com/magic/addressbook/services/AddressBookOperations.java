@@ -68,4 +68,16 @@ public class AddressBookOperations implements IAddressBookOperations {
         readWriteOperations.readFromTextFile(filename);
 
     }
+
+    @Override
+    public void WriteToCSVFile(String filename, String addressBookName) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.writeDataToCSVFile(filename, addressBook.get(addressBookName));
+    }
+
+    @Override
+    public void readFromCSVFile(String filename) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.readFromCSVFile(filename);
+    }
 }

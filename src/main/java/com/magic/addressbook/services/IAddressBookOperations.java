@@ -16,4 +16,7 @@ public interface IAddressBookOperations {
     void searchPersonByState(String state);
     void writeToTextFile(String filename, String addressBookName) throws IOException;
     void readFromTextFile(String filename) throws IOException;
+    void WriteToCSVFile(String filename, String addressBookName) throws IOException;
+    void readFromCSVFile(String filename) throws IOException;
+
 }
