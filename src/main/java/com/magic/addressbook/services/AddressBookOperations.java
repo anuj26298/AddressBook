@@ -4,6 +4,7 @@ package com.magic.addressbook.services;
  */
 import com.magic.addressbook.controller.*;
 import com.magic.addressbook.entity.*;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,5 +80,17 @@ public class AddressBookOperations implements IAddressBookOperations {
     public void readFromCSVFile(String filename) throws IOException {
         ReadWriteOperations readWriteOperations = new ReadWriteOperations();
         readWriteOperations.readFromCSVFile(filename);
+    }
+
+    @Override
+    public void WriteToJSONFile(String filename, String addressBookName) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.writeToJSONFile(filename, addressBook.get(addressBookName));
+    }
+
+    @Override
+    public void readFromJSONFile(String filename) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.readFromJSONFile(filename);
     }
 }

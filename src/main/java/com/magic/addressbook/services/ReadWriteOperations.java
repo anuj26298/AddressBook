@@ -1,14 +1,15 @@
 package com.magic.addressbook.services;
 
+import com.google.gson.Gson;
 import com.magic.addressbook.entity.PersonInfo;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
+import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import com.opencsv.CSVReader;
@@ -74,6 +75,34 @@ public class ReadWriteOperations {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void writeToJSONFile(String filename, List<PersonInfo> personInfoList) throws IOException{
+        Path jsonFilePath = Paths.get(path + filename + ".json");
+        Gson gson = new Gson();
+        String json = gson.toJson(personInfoList);
+        FileWriter writer = new FileWriter(String.valueOf(jsonFilePath));
+        writer.write(json);
+        writer.close();
+    }
+
+    public void readFromJSONFile(String filename) throws IOException{
+        Gson gson = new Gson();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path + filename +
+                ".json"));
+        PersonInfo[] personInfos = gson.fromJson(bufferedReader,PersonInfo[].class);
+        List<PersonInfo> personInfoList = Arrays.asList(personInfos);
+
+        for (PersonInfo personInfo : personInfoList){
+            System.out.println(personInfo.getFirstName());
+            System.out.println(personInfo.getLastName());
+            System.out.println(personInfo.getAddress());
+            System.out.println(personInfo.getCity());
+            System.out.println(personInfo.getState());
+            System.out.println(personInfo.getZipCode());
+            System.out.println(personInfo.getPhoneNumber());
+            System.out.println(personInfo.getEmail());
         }
     }
 }

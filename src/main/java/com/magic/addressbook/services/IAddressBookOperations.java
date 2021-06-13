@@ -18,5 +18,7 @@ public interface IAddressBookOperations {
     void readFromTextFile(String filename) throws IOException;
     void WriteToCSVFile(String filename, String addressBookName) throws IOException;
     void readFromCSVFile(String filename) throws IOException;
+    void WriteToJSONFile(String filename, String addressBookName) throws IOException;
+    void readFromJSONFile(String filename) throws IOException;
 
 }
