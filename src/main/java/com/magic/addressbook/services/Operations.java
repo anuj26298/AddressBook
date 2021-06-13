@@ -60,11 +60,6 @@ public class Operations implements IOperations {
             System.out.println("Person Not Found");
     }
 
-    @Override
-    public List<String> sortedContact(List<PersonInfo> personInfos) {
-        List<String> sortedList = (List<String>) personInfos.stream().sorted();
-        return  sortedList;
-    }
 
     @Override
     public void deleteContact(List<PersonInfo> personInfos, String firstName, String lastName) {

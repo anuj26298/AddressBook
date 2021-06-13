@@ -11,6 +11,6 @@ public interface IOperations {
     void view(List<PersonInfo> personInfos);
     void updateContact(List<PersonInfo> personInfos, String firstName, String lastName, PersonInfo personInfo);
     void deleteContact(List<PersonInfo> personInfos, String firstName, String lastName);
-    List<String> sortedContact(List<PersonInfo> personInfos);
+
 
 }

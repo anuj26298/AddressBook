@@ -5,6 +5,7 @@ package com.magic.addressbook.services;
 import com.magic.addressbook.controller.*;
 import com.magic.addressbook.entity.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,18 +43,6 @@ public class AddressBookOperations implements IAddressBookOperations {
                     .count();
         }
         System.out.println("Number of Person from " + city + ": " + count);
-//            int count = 0;
-//            for (Map.Entry mapValue : addressBook.entrySet()){
-//                String key = (String)mapValue.getKey();
-//                List<PersonInfo> personInfos = addressBook.get(key);
-//                for (PersonInfo personInfo : personInfos){
-//                    if (personInfo.getCity().equalsIgnoreCase(city)){
-//                        System.out.println(personInfo);
-//                        count++;
-//                    }
-//                }
-//            }
-//        System.out.println("Number of Person from " + city + ": " + count);
     }
 
     @Override
@@ -66,17 +55,17 @@ public class AddressBookOperations implements IAddressBookOperations {
         }
         System.out.println("Number of Person from " + state + ": " + count);
     }
-//        int count = 0;
-//        for (Map.Entry mapValue : addressBook.entrySet()){
-//            String key = (String)mapValue.getKey();
-//            List<PersonInfo> personInfos = addressBook.get(key);
-//            for (PersonInfo personInfo : personInfos){
-//                if (personInfo.getState().equalsIgnoreCase(state)){
-//                    System.out.println(personInfo);
-//                    count++;
-//                }
-//            }
-//        }
-//        System.out.println("Number of Person from " + state + ": " + count);
-//    }
+
+    @Override
+    public void writeToTextFile(String filename, String addressBookName) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.writeToTextFile(filename,addressBook.get(addressBookName));
+    }
+
+    @Override
+    public void readFromTextFile(String filename) throws IOException {
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
+        readWriteOperations.readFromTextFile(filename);
+
+    }
 }

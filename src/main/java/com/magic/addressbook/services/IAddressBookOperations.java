@@ -1,4 +1,7 @@
 package com.magic.addressbook.services;
+
+import java.io.IOException;
+
 /*
     Interface of AddressBook Operation
     These Operations are for multiple address book
@@ -11,4 +14,6 @@ public interface IAddressBookOperations {
     void showAddressBook();
     void searchPersonByCity(String city);
     void searchPersonByState(String state);
+    void writeToTextFile(String filename, String addressBookName) throws IOException;
+    void readFromTextFile(String filename) throws IOException;
 }

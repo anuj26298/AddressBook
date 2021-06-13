@@ -1,8 +1,8 @@
 package com.magic.addressbook.controller;
 
-import com.magic.addressbook.entity.*;
 import com.magic.addressbook.services.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 /*
     @author Anuj Kumar
@@ -12,9 +12,10 @@ import java.util.Scanner;
     Main Class of the Address Book System
  */
 public class AddressBookMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         IAddressBookOperations addBookOperations = new AddressBookOperations();
+        ReadWriteOperations readWriteOperations = new ReadWriteOperations();
         String controlVariable;
 
         do {
@@ -22,6 +23,7 @@ public class AddressBookMain {
             System.out.println("Enter 'open' to open a Address Book");
             System.out.println("Enter 'all' to view all Address Book");
             System.out.println("Enter 'search' to search persons");
+            System.out.println("Enter 'write' to write data in a file");
             System.out.println();
             System.out.println();
             String input = scanner.nextLine();
@@ -64,6 +66,18 @@ public class AddressBookMain {
                 case "all":
                     addBookOperations.showAddressBook();
                     break;
+
+                case "write":
+                    System.out.println("Enter the Address Book name");
+                    String addressBookName = scanner.next();
+                    System.out.println("Enter the name of file");
+                    String textFilename = scanner.next();
+                    addBookOperations.writeToTextFile(textFilename, addressBookName);
+
+                case "read":
+                    System.out.println("Enter filename to read: ");
+                    String filename = scanner.next();
+                    addBookOperations.readFromTextFile(filename);
             }
             System.out.println("Do you want to continue?(y/n)");
             controlVariable = scanner.nextLine();

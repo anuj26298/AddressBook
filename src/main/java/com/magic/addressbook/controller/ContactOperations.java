@@ -17,6 +17,7 @@ public class ContactOperations {
             System.out.println("Enter 'del' to Delete Data.");
             System.out.println("Enter 'edit' to Update Data.");
             System.out.println("Enter 'view' to view Address Book");
+            System.out.println("Enter 'back' for previous menu.");
             String input = scanner.nextLine();
 
             switch (input) {
@@ -90,6 +91,9 @@ public class ContactOperations {
                     operations.view(personInfos);
                     System.out.println("Do you want to Continue?(y/n)");
                     controlVariable = scanner.nextLine();
+                    break;
+                case "back":
+                    AddressBookMain addressBookMain = new AddressBookMain();
                     break;
 
                 default:
